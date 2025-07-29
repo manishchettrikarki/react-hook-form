@@ -59,8 +59,6 @@ export default function FormSelectiveInput(props: IFormSelectiveInput) {
                 formatOptionLabel={(e) => (
                   <div className="flex items-center gap-2 justify-center">
                     {e.icon}
-                    {/* Optional: show label next to icon */}
-                    {/* <span>{e.label}</span> */}
                   </div>
                 )}
               />
