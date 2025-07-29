@@ -1,4 +1,4 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, get, useFormContext } from "react-hook-form";
 
 interface IFormSelectProps {
   name: string;
@@ -11,7 +11,14 @@ interface IFormSelectProps {
  */
 export default function FormSelect(props: IFormSelectProps) {
   const { name, label, options, placeholder } = props;
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
+
+  //
+  const errorMessage = get(errors, name)?.message;
+
   //
   return (
     <div className="flex flex-col">
@@ -25,19 +32,19 @@ export default function FormSelect(props: IFormSelectProps) {
             control={control}
             render={({ field }) => (
               <select
-                className="bg-gray-50 p-2.5 appearance-none pr-8 border border-gray-300 rounded-md text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 value={field.value?.value || ""}
                 onChange={(e) => {
-                  const selected = options.find(
-                    (option) => option.value === e.target.value
+                  const selectedOption = options.find(
+                    (opt) => opt.value === e.target.value
                   );
-                  field.onChange(selected);
+                  field.onChange(selectedOption || { label: "", value: "" });
                 }}
               >
-                <option value="">{placeholder}</option>
-                {options.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
+                <option value="">{placeholder || "Select..."}</option>
+                {options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
                   </option>
                 ))}
               </select>
@@ -45,6 +52,11 @@ export default function FormSelect(props: IFormSelectProps) {
           />
         </div>
       </div>
+      {errorMessage && (
+        <p className="text-red-500 text-sm" data-error-for={name}>
+          {errorMessage.toString()}
+        </p>
+      )}
     </div>
   );
 }

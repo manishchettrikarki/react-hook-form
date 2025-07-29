@@ -20,7 +20,7 @@ export default function FormInput(props: IFormSelectInput) {
     formState: { errors },
   } = useFormContext();
 
-  const { name, defaultValue, label, required, disabled, placeholder } = props;
+  const { name, label, required, disabled, placeholder } = props;
   const errorMessage = get(errors, name)?.message;
 
   //
@@ -41,7 +41,6 @@ export default function FormInput(props: IFormSelectInput) {
         <input
           className="bg-gray-50 border border-gray-300 rounded-md text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           disabled={disabled}
-          defaultValue={defaultValue}
           placeholder={placeholder}
           {...register(name)}
         />
