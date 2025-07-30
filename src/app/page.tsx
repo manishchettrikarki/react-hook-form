@@ -10,6 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import FormIconSelectInput from "@/components/formIconSelectInput";
 import { ReactNode } from "react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import Dropdown from "@/components/dropdown";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 type optionsType = {
   value: string;
@@ -125,11 +127,14 @@ export default function Homepage() {
               <div className="col-span-6">
                 <FormIconSelectInput
                   name="formIconSelect"
-                  placeholder="Enter a value"
+                  // placeholder="Enter a value"
                   label="Form select input"
                   options={optionsIconSelect}
                   required
                 />
+              </div>
+              <div className="col-span-6">
+                <Dropdown icon={<MdOutlineKeyboardArrowDown size={24} />} />
               </div>
             </div>
             <hr className="w-full text-gray-300" />

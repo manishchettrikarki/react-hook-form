@@ -55,7 +55,7 @@ export default function FormSelectiveInput(props: IFormSelectiveInput) {
                     borderBottomLeftRadius: "0.375rem",
                   }),
                 }}
-                placeholder={placeholder || "Select..."}
+                placeholder={placeholder || ""}
                 formatOptionLabel={(e) => (
                   <div className="flex items-center gap-2 justify-center">
                     {e.icon}
@@ -65,7 +65,7 @@ export default function FormSelectiveInput(props: IFormSelectiveInput) {
             </div>
             <input
               type="text"
-              placeholder="Enter value"
+              // placeholder="Enter value"
               className="w-7/8 border border-l-0 border-gray-300 text-sm text-gray-900 rounded-r-md focus:ring-blue-500 focus:border-blue-500 p-2.5"
               value={field.value.value}
               onChange={(e) =>
