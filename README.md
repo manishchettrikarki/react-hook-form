@@ -1,36 +1,205 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📋 React Hook Form Practice
 
-## Getting Started
+A practice project demonstrating how to build and validate forms using **React Hook Form**. This repository showcases efficient form handling, validation, error management, and improved user experience with minimal re-renders.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- 📝 Form creation with React Hook Form
+- ✅ Client-side validation
+- ⚡ High-performance form state management
+- ❌ Error handling and validation messages
+- 🔄 Controlled and uncontrolled inputs
+- 📱 Responsive user interface
+- 🎯 Clean and reusable components
+
+---
+
+## 🛠 Tech Stack
+
+- React
+- TypeScript / JavaScript
+- React Hook Form
+- Vite
+- Tailwind CSS
+
+---
+
+## 📂 Project Structure
+
+```
+react-hook-form/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── App.jsx / App.tsx
+│   └── main.jsx / main.tsx
+│
+├── public/
+├── package.json
+└── README.md
+```
+
+---
+
+## 📦 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/manishchettrikarki/react-hook-form.git
+
+cd react-hook-form
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+pnpm install
+```
+
+---
+
+## ▶️ Running the Project
+
+Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+or
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open your browser and visit:
 
-## Learn More
+```
+http://localhost:5173
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 Concepts Covered
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `useForm()`
+- `register()`
+- `handleSubmit()`
+- Form Validation
+- Error Messages
+- Default Values
+- Form Reset
+- Watching Form Values
+- Controlled Components
+- Custom Validation Rules
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Example
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```jsx
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm();
+
+const onSubmit = (data) => console.log(data);
+
+return (
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <input
+      {...register("name", {
+        required: "Name is required",
+      })}
+    />
+
+    {errors.name && <p>{errors.name.message}</p>}
+
+    <button type="submit">Submit</button>
+  </form>
+);
+```
+
+---
+
+## 🎯 Learning Objectives
+
+This project was created to practice:
+
+- Efficient form management in React
+- Form validation techniques
+- Error handling
+- Building reusable form components
+- Improving user experience with React Hook Form
+
+---
+
+## 🔮 Future Enhancements
+
+- Multi-step forms
+- Dynamic field arrays
+- File uploads
+- API integration
+- Zod/Yup validation
+- Authentication forms
+- Advanced custom validation
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+
+2. Create a feature branch
+
+```bash
+git checkout -b feature/new-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push to GitHub
+
+```bash
+git push origin feature/new-feature
+```
+
+5. Open a Pull Request
+
+---
+
+## 👨‍💻 Author
+
+**Manish Karki**
+
+GitHub: https://github.com/manishchettrikarki
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
